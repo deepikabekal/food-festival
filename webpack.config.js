@@ -1,6 +1,5 @@
 const path = require('path');
 const webpack = require('webpack');
-require('bootstrap');
 
 //create main configuration object
 module.exports = {
@@ -9,7 +8,7 @@ module.exports = {
 
     //add output
     output : {
-        path : path.resolve(__dirname, 'dist'),
+        path : path.resolve(__dirname, '/dist'),
         filename : 'main.bundle.js'
     },
 
