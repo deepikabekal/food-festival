@@ -1,4 +1,6 @@
 const path = require('path');
+const webpack = require('webpack');
+require('bootstrap');
 
 //create main configuration object
 module.exports = {
@@ -11,6 +13,12 @@ module.exports = {
         filename : 'main.bundle.js'
     },
 
+    plugins : [
+        new webpack.ProvidePlugin({
+            $ : 'jquery',
+            jQuery : 'jquery'
+        }),
+    ],
     //add mode
     mode : 'development'
 
