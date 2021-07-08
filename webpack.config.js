@@ -1,21 +1,35 @@
 const path = require('path');
 const webpack = require('webpack');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 //create main configuration object
 module.exports = {
     //add entry point
-    entry  : './assets/js/script.js',
+    entry  : {
+        app : './assets/js/script.js',
+        events : './assets/js/events.js',
+        schedule : './assets/js/schedule.js',
+        tickets : './assets/js/tickets.js'
+    }   ,
+    devServer : {
+        contentBase : './dist',
+        port : 3000,
+        hot : true
+    },
 
     //add output
     output : {
-        path : path.resolve(__dirname, '/dist'),
-        filename : 'main.bundle.js'
+        filename : '[name].bundle.js',
+        path : __dirname + '/dist'        
     },
 
     plugins : [
         new webpack.ProvidePlugin({
             $ : 'jquery',
             jQuery : 'jquery'
+        }),
+        new BundleAnalyzerPlugin({
+            analyzerMode : 'static'
         }),
     ],
     //add mode
